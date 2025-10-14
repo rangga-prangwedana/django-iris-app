@@ -25,9 +25,7 @@ SECRET_KEY = 'django-insecure-65e-h3r$-ho8(c3dh1-_00*k@ny@&5nd6h@(8u&5fs@n@(bo^8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'predictor', # This is added manually for the project
 ]
 
 MIDDLEWARE = [
@@ -54,7 +53,7 @@ ROOT_URLCONF = 'mlapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"], # Added manually for the projext
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
