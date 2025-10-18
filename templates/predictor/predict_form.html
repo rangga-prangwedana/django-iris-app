@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Predictor</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/iris.css' %}">
+</head>
+<body>
+   <h1>Iris Predictor</h1> 
+
+   <p class="muted">Enter Iris flower messurements to get a prediction.</p>
+
+   <div class="card">
+    <form action="/predict/" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div>
+                <label for="id_sepal_length">Sepal length (cm)</label>
+                {{ form.sepal_length}}
+            </div>
+            <div>
+                <label for="id_sepal_width">Sepal width (cm)</label>
+                {{ form.sepal_width }}
+            </div>
+            <div>
+                <label for="id_petal_length">Petal length (cm)</label>
+                {{ form.petal_length }}
+            </div>
+            <div>
+                <label for="id_petal_width">Petal width (cm)</label>
+                {{ form.petal_width }}
+            </div>
+        </div>
+        <button type="submit">Predict</button>
+    </form>
+   </div>
+
+   {% if submitted and result %}
+   <div class="result">
+       Predicted class: {{ result.class_name}}<br />
+    <div class="muted">
+        Probabilities:
+        <ul>
+            {% for name, p in result.probabilities.items %}
+            <li>{{ name }}: {{ p|floatformat:3 }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %%}
+   </div>
+   
+   <p class="muted" style="margin-top:1rem;"></p>
+   API available at <code>POST /api/predict</code>
+</body>
+</html>
