@@ -15,7 +15,7 @@ def home(request):
 @require_http_methods(["POST"])
 def predict_view(request):
     form = IrisForm(request.POST)
-    if not from.is_valid():
+    if not form.is_valid():
         return render(request, "predictor/predict_form.html", {"form": form})
     data = form.cleaned_data
     features = [

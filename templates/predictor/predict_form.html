@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iris Predictor</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/iris.css' %}">
+    <link rel="stylesheet" href="{% static '/css/iris.css' %}">
 </head>
 <body>
    <h1>Iris Predictor</h1> 
@@ -18,7 +18,7 @@
         <div class="row">
             <div>
                 <label for="id_sepal_length">Sepal length (cm)</label>
-                {{ form.sepal_length}}
+                {{ form.sepal_length }}
             </div>
             <div>
                 <label for="id_sepal_width">Sepal width (cm)</label>
@@ -48,7 +48,7 @@
             {% endfor %}
         </ul>
     </div>
-    {% endif %%}
+    {% endif %}
    </div>
    
    <p class="muted" style="margin-top:1rem;"></p>
